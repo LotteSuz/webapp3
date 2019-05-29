@@ -1,0 +1,33 @@
+{% extends "orders/layout.html" %}
+
+{% block title %} Order {% endblock %}
+{% block main %}
+
+<h1> {{item.name}} </h1>
+
+<form class="m-5" action="{% url 'cart' %}" method="post">
+  {% csrf_token %}
+  <select name=size class="custom-select">
+      <option disabled selected>Choose Size</option>
+      <option value="Small">Small {{item.regprice}}</option>
+      {% if item.largeprice %}
+      <option value="Large">Large {{item.largeprice}}</option>
+      {% endif %}
+  </select>
+  <br><br>
+
+{% if pizza%}
+{% for i in "x"|ljust:number %}
+<select name="{{ forloop.counter }}" class="custom-select">
+    <option disabled selected>Choose Topping</option>
+{% for topping in toppings%}
+<option value={{topping}}>{{topping}}</option>
+{% endfor %}
+</select>
+<br><br>
+{% endfor %}
+{%endif%}
+
+<br><br>
+    <button type="submit" name=dishname value="{{item.name}}" class="btn btn-primary">Add to Order</button>
+{% endblock %}

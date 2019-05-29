@@ -1,0 +1,112 @@
+{% extends "orders/layout.html" %}
+
+{% block title %} Menu {% endblock %}
+{% block main %}
+      <table class="table table-hover">
+        <thead>
+          <th> Sicilian Pizzas </th>
+          <th> Small </th>
+          <th> Large </th>
+        </thead>
+        <tbody>
+          {% for pizza in sicilians %}
+          <tr>
+            <td> <a href="{% url 'dish' pizza.name %}"> {{pizza.name}} </a></td>
+            <td> {{pizza.regprice}} </td>
+            <td> {{pizza.largeprice}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <br><br><br>
+
+      <table class="table table-hover">
+        <thead>
+          <th> Regular Pizzas </th>
+          <th> Small </th>
+          <th> Large </th>
+        </thead>
+        <tbody>
+          {% for pizza in regulars %}
+          <tr>
+            <td> <a href="{% url 'dish' pizza.name %}"> {{pizza.name}} </a> </td>
+            <td> {{pizza.regprice}} </td>
+            <td> {{pizza.largeprice}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <br><br><br>
+
+      <table class="table table-hover">
+        <thead>
+          <th> Pasta </th>
+          <th> Price </th>
+        </thead>
+        <tbody>
+          {% for pasta in pastas %}
+          <tr>
+            <td> <a href="{% url 'dish' pasta.name %}"> {{pasta.name}}</a></td>
+            <td> {{pasta.regprice}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <br><br><br>
+
+      <table class="table table-hover">
+        <thead>
+          <th> Salads </th>
+          <th> Price </th>
+        </thead>
+        <tbody>
+          {% for salad in salads %}
+          <tr>
+            <td> <a href="{% url 'dish' salad.name %}"> {{salad.name}} </a> </td>
+            <td> {{salad.regprice}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <br><br><br>
+
+      <table class="table table-hover">
+        <thead>
+          <th> Subs </th>
+          <th> Small </th>
+          <th> Large </th>
+        </thead>
+        <tbody>
+          {% for sub in subs %}
+          <tr>
+            <td> <a href="{% url 'dish' sub.name %}"> {{sub.name}} </a> </td>
+            <td> {{sub.regprice}} </td>
+            <td> {{sub.largeprice}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <br><br><br>
+
+      <table class="table table-hover">
+        <thead>
+          <th> Plates </th>
+          <th> Small </th>
+          <th> Large </th>
+        </thead>
+        <tbody>
+          {% for plate in plates %}
+          <tr>
+            <td> <a href="{% url 'dish' plate.name %}"> {{plate.name}} </a> </td>
+            <td> {{plate.regprice}} </td>
+            <td> {{plate.largeprice}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

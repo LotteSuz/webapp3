@@ -1,0 +1,31 @@
+{% extends "orders/layout.html"%}
+
+{% block title %} Shopping Cart of {{user}}{% endblock %}
+{% block main %}
+
+{% regroup orders by user as user_list %}
+<table class="table table-hover">
+  {% for user in user_list %}
+  <thead>
+    <th> {{ user.grouper }} </th>
+    <th> Dish </th>
+    <th> Size </th>
+    <th> Topping(s) </th>
+    <th> Price </th>
+    <th> <a href="{% url 'ordercomplete' user.grouper %}">  Order Complete </a> </th>
+  </thead>
+  <tbody>
+    {% for order in user.list %}
+    <tr>
+      <td>  </td>
+      <td> {{ order.item }} </td>
+      <td> {{ order.size }} </td>
+      <td> {{ order.topping }} </td>
+      <td> {{ order.price }} </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  {% endfor %}
+</table>
+
+{% endblock %}
